@@ -71,9 +71,11 @@ ITEM_PIPELINES = {
     #'article_spider.pipelines.ArticleSpiderPipeline': 300,
     #'article_spider.pipelines.JsonWithEncodingPipeline': 1,
     #'scrapy.pipelines.images.ImagesPipeline': 1,
-    'article_spider.pipelines.ArticleImagePipeline': 1,
-    'article_spider.pipelines.ImageMysqlTwistedPipeline': 2,
-    'article_spider.pipelines.ArticleContentReplacePipeline': 3,
+    'article_spider.pipelines.GridFSFilesPipeline': 1,
+    'article_spider.pipelines.GridFSImagesPipeline': 2,
+    #'article_spider.pipelines.ArticleImagePipeline': 1,
+    'article_spider.pipelines.ImageMysqlTwistedPipeline': 3,
+    'article_spider.pipelines.ArticleContentReplacePipeline': 4,
     'article_spider.pipelines.MysqlTwistedPipeline': 300,
 
 }
@@ -119,5 +121,17 @@ MYSQL_PASSWORD = "123456"
 SQL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 SQL_DATE_FORMAT = "%Y-%m-%d"
 
-MONGO_URI = "127.0.0.1:27017"
-MONGO_DATABASE = "article_spider"
+#MONGO_URI = "127.0.0.1:27017"
+#MONGO_DATABASE = "article_spider"
+
+MONGO_URI = "mongodb://localhost:27017/scrapy_files"
+
+
+#IMAGES_STORE="mongodb://127.0.0.1:27017/scrapy_files"
+#MONGO_IMAGE_DATABASE = "scrapy_files"
+#PIPELINE_MONGODB_ENABLED=True
+
+IMAGES_THUMBS = {
+    'small': (50, 50),
+    'big': (100, 100),
+}

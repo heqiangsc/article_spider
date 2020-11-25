@@ -24,9 +24,9 @@ class CnBlogSpider(scrapy.Spider):
             yield Request(url=parse.urljoin(response.url, post_url), callback=self.parse_detail)
 
         # 提取下一页并交给scrapy进行下载
-        next_url = response.xpath('//*[@id="paging_block"]/div/a//@href')[-1].extract()
-        if next_url:
-            yield Request(url=parse.urljoin(response.url, next_url), callback=self.parse)
+        #next_url = response.xpath('//*[@id="paging_block"]/div/a//@href')[-1].extract()
+        #if next_url:
+           # yield Request(url=parse.urljoin(response.url, next_url), callback=self.parse)
 
     def parse_detail(self, response):
         # 通过item loader加载item
